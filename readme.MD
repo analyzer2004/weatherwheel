@@ -4,7 +4,7 @@ The **WeatherWheel** is a compound radial chart that visualizes the most importa
 
 Typically, the center circle is filled with chart legend or just left blank, but it is actually a very suitable place for showing additional information. By default, the center of the wheel shows bubbles that represent the statistics of yearly weather conditions. As the user hovers over the month labels, it displays the monthly statistic instead ***(Click any part of the center to switch between yearly/monthly statistics)***. The center circle also works as a display; it shows daily weather data as the user hovers over any other part of the chart.
 
-**For a live demo, see [Weast Coast weather from Seattle to San Diego](https://observablehq.com/@analyzer2004/sunny-day-rainy-day-in-seattle).**
+**For a live demo, see [Weast Coast weather from Seattle to San Diego](https://observablehq.com/@analyzer2004/west-coast-weather-from-seattle-to-san-diego).**
 
 <img src="https://github.com/analyzer2004/weatherwheel/blob/master/images/cover.png" width="768">
 
