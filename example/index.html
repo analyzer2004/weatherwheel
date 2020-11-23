@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>        
+        body {
+            font-size: 12pt;
+        }
+
+        svg text {
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="../src/weatherwheel.js"></script>
+
+    <script>
+        const icon = {
+            clear: "images/clear.svg",
+            cloudy: "images/cloudy.svg",
+            overcast: "images/overcast.svg",
+            rain: "images/rain.svg",
+            snow: "images/snow.svg"
+        }
+    </script>
+</head>
+<body>
+    <form id="options" oninput="refresh()">
+        Diameter: <input name="diameter" type="range" min="0" max="2048" value="640" />
+    </form>
+    <script>
+        var t;
+        const refresh = () => {
+            const diameter = +options.diameter.value;
+            clearTimeout(t);
+            t = setTimeout(() => {
+                d3.csv("seattle.csv", d3.autoType).then(data => {
+                    d3.select("svg").remove();
+                    const svg = d3.select("body")
+                        .append("svg")
+                        .attr("viewBox", `${-diameter / 2} ${-diameter / 2} ${diameter} ${diameter}`)
+                        .style("width", diameter)
+                        .style("height", diameter);
+
+                    const wheel = new WeatherWheel(svg)
+                        .size([diameter, diameter])
+                        .icon(icon)
+                        .data(data)
+                        .render();
+                });
+            }, 50);
+        }
+
+        refresh();
+    </script>
+</body>
+</html>
