@@ -1,4 +1,6 @@
-﻿class WeatherWheel {
+﻿// https://github.com/analyzer2004/weatherwheel
+// Copyright 2020 Eric Lo
+class WeatherWheel {
     constructor(container) {
         this._container = container;
         this._g = null;
