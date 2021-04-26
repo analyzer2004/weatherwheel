@@ -33,3 +33,4 @@ The WeatherWheel visualizes yearly weather data into a beautiful interactive com
 * **precipitationUnit(unit)** - Sets the unit of precipitation and returns this chart. Default is inch.
 * **data(data)** - Sets the yearly weather data and return this chart.
 * **render()** - Renders the visualization and returns this chart.
+* **onhover(date)** - Occurs when mouse hovers on a day or the month labels.

@@ -1,6 +1,6 @@
 ﻿// https://github.com/analyzer2004/weatherwheel
 // Copyright 2020 Eric Lo
-class WeatherWheel {
+export default class WeatherWheel {
     constructor(container) {
         this._container = container;
         this._g = null;
@@ -78,6 +78,8 @@ class WeatherWheel {
             humidity: null
         };
 
+        this._onhover = null;
+
         this._f = true;
         this._uniqueId = new String(Date.now() * Math.random()).replace(".", "");
     }
@@ -118,6 +120,10 @@ class WeatherWheel {
 
     data(_) {
         return arguments.length ? (this._data = _, this) : this._data;
+    }
+
+    onhover(_) {
+        return arguments.length ? (this._onhover = _, this) : this._onhover;
     }
 
     render() {
@@ -453,6 +459,8 @@ class WeatherWheel {
                     .transition().duration(500)
                     .ease(d3.easeElastic)
                     .attr("transform", curr.attr("transform"));
+
+                if (this._onhover) this._onhover(d.date);
             })
             .on("mouseleave", (e, d) => {
                 this._statistics.attr("opacity", 1);
@@ -506,6 +514,8 @@ class WeatherWheel {
                 this._yearStat = false;
                 this._currMonth = d.index;
                 this._showStatistics(this._getMonthData(d.index), this._months[d.index]);
+
+                if (this._onhover) this._onhover(new Date(this._year, d.index, 1));
             });
     }
 
